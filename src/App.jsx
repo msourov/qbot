@@ -1,7 +1,7 @@
-import "./App.css";
-import Layout from "./Layout";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Options from "./components/Options";
+import SelectOptions from "./components/Options";
+import Layout from "./Layout";
+import "./App.css";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/path" element={<Options />} />
+            <Route path="/:option" element={<SelectOptions />} />
             {/* <Route path="/popd" element={<POPD />} /> */}
           </Route>
         </Routes>

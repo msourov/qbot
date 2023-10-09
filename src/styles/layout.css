@@ -1,0 +1,33 @@
+body {
+  background-image: url("./qbot-bg.png");
+  background-size: cover; /* Optional: adjust to your design needs */
+  /* other CSS styles for your container */
+}
+.header {
+  place-content: center;
+}
+.btn-options {
+  display: flex;
+  place-content: center;
+  /* margin-top: 200px; */
+}
+.bot-logo-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 1vw;
+}
+
+@media (max-width: 650px) {
+  .bot-logo-container {
+    left: 50%; /* Move the container to the center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+  }
+}
+/* .addv {
+  width: 50%;
+  color: black;
+  align-self: center;
+  position: fixed;
+  bottom: 20px;
+} */

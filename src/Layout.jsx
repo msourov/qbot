@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useLocation, Outlet } from "react-router-dom";
 import { Button, Space } from "antd";
+import "./styles/layout.css";
 
 export default function Layout() {
   const location = useLocation();
   const isRootPath = location.pathname === "/";
-  console.log("inside layout");
   return (
     <>
       <div className="container">
@@ -23,7 +23,7 @@ export default function Layout() {
               direction="vertical"
               style={{ marginInline: "auto", marginTop: "30px" }}
             >
-              <Link to="/path">
+              <Link to={{ pathname: "/path", search: "?option=gopd" }}>
                 <Button
                   type="primary"
                   style={{
@@ -36,7 +36,7 @@ export default function Layout() {
                   GOPD
                 </Button>
               </Link>
-              <Link to="/path">
+              <Link to={{ pathname: "/path", search: "?option=popd" }}>
                 <Button
                   type="primary"
                   style={{
@@ -55,17 +55,26 @@ export default function Layout() {
           <Outlet />
         </div>
 
-        <div
-          className="image-container"
-          style={{
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-            marginLeft: "1vw",
-          }}
-        >
+        <div className="bot-logo-container">
           <img src="./B1.png" style={{ width: "80px" }} alt="Logo" />
+          <p
+            className="bot-logo-text"
+            style={{
+              color: "black",
+              margin: "0.5em auto",
+              marginTop: "0",
+              fontFamily: "Georgia, monospace",
+              // fontWeight: "bold",
+            }}
+          >
+            A Queue Management Solution
+          </p>
         </div>
+        {/* <marquee className="addv">
+          A product of Transworld Mercantile Corporation. For more information
+          please visit <strong>www.transworldbd.com</strong> or call{" "}
+          <strong>+880 9613848484, +880 1860877300</strong>
+        </marquee> */}
       </div>
     </>
   );
