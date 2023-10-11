@@ -54,6 +54,13 @@ export default function Layout() {
         <div className="nested-content">
           <Outlet />
         </div>
+        <div className="scrolling-container">
+          <div className="scrolling-text">
+            A product of Transworld Mercantile Corporation. For more information
+            please visit <strong>www.transworldbd.com</strong> or call{" "}
+            <strong>+880 9613848484, +880 1860877300</strong>
+          </div>
+        </div>
 
         <div className="bot-logo-container">
           <img src="./B1.png" style={{ width: "80px" }} alt="Logo" />
@@ -67,14 +74,9 @@ export default function Layout() {
               // fontWeight: "bold",
             }}
           >
-            A Queue Management Solution
+            Queue Management Solution
           </p>
         </div>
-        {/* <marquee className="addv">
-          A product of Transworld Mercantile Corporation. For more information
-          please visit <strong>www.transworldbd.com</strong> or call{" "}
-          <strong>+880 9613848484, +880 1860877300</strong>
-        </marquee> */}
       </div>
     </>
   );

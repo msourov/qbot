@@ -16,18 +16,48 @@ body {
   bottom: 0;
   left: 0;
   margin-left: 1vw;
+  /* width: min(5em, 10vw); */
 }
-
+.nested-content {
+  padding: 0;
+  margin: 0;
+}
 @media (max-width: 650px) {
   .bot-logo-container {
     left: 50%; /* Move the container to the center horizontally */
     transform: translateX(-50%); /* Center horizontally */
   }
 }
-/* .addv {
-  width: 50%;
+.scrolling-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 40vw;
+  margin-top: 120px;
+}
+
+.scrolling-text {
+  /* width: 50%; */
   color: black;
-  align-self: center;
-  position: fixed;
-  bottom: 20px;
-} */
+  font-size: 1.15rem;
+  /* align-self: center; */
+  text-align: center;
+  /* margin-bottom: -80px; */
+  /* position: fixed; */
+  /* bottom: 20px; */
+}
+
+.scrolling-text {
+  white-space: nowrap;
+  animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+  }
+  100% {
+    transform: translateX(-100%); /* End off-screen to the left */
+  }
+}

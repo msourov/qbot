@@ -1,5 +1,46 @@
-.custom-checkbox {
-  width: 54px;
-  height: 24px;
-  font-size: 3rem;
+/* * {
+  outline: auto;
+} */
+
+.options-container {
+  /* outline: 3px solid red; */
+  /* max-height: 250px; */
+  overflow-y: auto;
+  padding: 0 auto;
+  padding: 1.5em;
+  margin: 50px;
+  margin-left: min(100px, 15vw);
+  margin-bottom: 2em;
+}
+
+.checkbox-wrapper {
+  height: 150px;
+  /* overflow-y: scroll; */
+}
+.checkboxes {
+  display: flex;
+  align-content: center;
+  margin-bottom: 10px;
+}
+
+.checkboxes input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px; /* Add spacing between checkbox and label */
+}
+
+.checkboxes label {
+  color: black;
+  font-size: 1.1rem;
+}
+
+/* Style for when the checkbox is checked */
+.checkboxes input[type="checkbox"]:checked + label {
+  text-decoration: underline;
+}
+
+.ok-btn {
+  width: 15vw;
+  padding-top: 0;
+  margin-top: 0;
 }

@@ -1,22 +1,19 @@
 import axios from "axios";
 import { Button, Table } from "antd";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Checkbox, Divider } from "antd";
-// import "../styles/options.css";
+import "../styles/options.css";
 
 function SelectOptions() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const option = searchParams.get("option");
   const [res, setRes] = useState([]);
-  const [checkedList, setCheckedList] = useState([]);
+  const [checkedItems, setCheckedItems] = useState({});
+  const [selected, setSelected] = useState(null);
 
   let plainOptions = [];
-
-  if (res.length > 0) {
-    plainOptions = res.map((item) => item.name);
-  }
 
   const urls = {
     gopd: "http://qbot.backend.hidayahsmart.solutions/count/get/option?base=select",
@@ -32,55 +29,50 @@ function SelectOptions() {
       console.error(error);
     }
   };
+  if (res.length > 0) {
+    plainOptions = res.map((item) => item.name);
+  }
   useEffect(() => {
     getFields();
   }, []);
 
-  const onChange = (list) => {
-    setCheckedList(list);
+  const handleCheckBox = (e) => {
+    const { id, checked } = e.target;
+    setCheckedItems({ ...checkedItems, [id]: checked });
   };
-  const CheckBoxGroup = Checkbox.Group;
-
-  // console.log("plainOptions", plainOptions); // ['Doctor 1', 'Doctor 3', 'Doctor 2', 'FT']
+  const handleSubmit = () => {
+    const checkedValues = Object.keys(checkedItems).filter(
+      (item) => checkedItems[item]
+    );
+    console.log("Checked values", checkedValues);
+  };
   return (
     <>
       <Divider />
-      {/* <CheckBoxGroup
-        style={{
-          flexDirection: "column",
-          // height: "100px",
-          // overflowY: "scroll",
-        }}
-        options={plainOptions}
-        value={checkedList}
-        onChange={onChange}
-      /> */}
-      <CheckBoxGroup
-        style={{
-          flexDirection: "column",
-        }}
-        options={plainOptions}
-        value={checkedList}
-        onChange={onChange}
-      >
-        {(options) => (
-          <ul>
-            {options.map((option) => (
-              <li key={option} style={{ marginBottom: "8px" }}>
-                <label style={{ fontSize: "1rem" }}>
-                  <Checkbox
-                    className="custom-checkbox"
-                    style={{ width: "24px", height: "24px", fontSize: "1rem" }}
-                    value={option}
-                  >
-                    {option}
-                  </Checkbox>
+      <div className="options-container">
+        <div className="checkbox-wrapper">
+          <form>
+            {plainOptions.map((item) => (
+              <div className="checkboxes" key={item}>
+                <input
+                  type="checkbox"
+                  id={item}
+                  checked={checkedItems[item]}
+                  onChange={handleCheckBox}
+                />
+                <label htmlFor={item} style={{ color: "black" }}>
+                  {item}
                 </label>
-              </li>
+              </div>
             ))}
-          </ul>
-        )}
-      </CheckBoxGroup>
+          </form>
+        </div>
+      </div>
+      <Link to="/">
+        <Button type="primary" onClick={handleSubmit} className="ok-btn">
+          Ok
+        </Button>
+      </Link>
     </>
   );
 }
